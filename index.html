@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Doces</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+    <header class="p-4 bg-white dark:bg-gray-800 shadow flex justify-between items-center">
+        <h1 class="text-xl font-bold">Mini doces artesanais</h1>
+        <button onclick="toggletheme()" class="px-3 py-1 bg-gray-300 dark:bg-gray-600 rounded">Alterar tema</button>
+    </header>
+
+    <nav class="p-4 bg-gray-200 dark:bg-gray-700 shadow">
+        <ul class="flex justify-center space-x-4">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Produtos</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    <main class="p-6">
+        <h2 class="text-xl font-semibold mb-4">Produtos</h2>
+            <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+    </main>
+
+    <script>
+        const products = [
+            {id: 1, name: 'Brigadeiro', price: 0.5, image: 'brigadeiro.jpg'},
+            {id: 1, name: 'Brigadeiro', price: 0.5, image: 'brigadeiro.jpg'},
+            {id: 1, name: 'Brigadeiro', price: 0.5, image: 'brigadeiro.jpg'},
+            ];
+
+        const productList = document.getElementById('product-list');
+
+        products.forEach(product => {
+            const productCard = document.createElement("div");
+            productCard.className = "bg-white dark:bg-gray-800 p-4 shadow rounded";
+            productCard.innerHTML = `
+                <img src="${product.image}" alt="${product.name}" class="w-full h-40 object-cover">
+                <h3 class="mt-2 font-bold">${product.name}</h3>
+                <p class="text-blue-600 dark:text-red-300">${product.price}</p>
+                <button class="mt-2 px-4 py-2 bg-red-500 text-white rounded">Adicionar ao Carrinho</button>
+            `;
+            productList.appendChild(productCard);
+        });
+    </script>
+</body>
+</html>
